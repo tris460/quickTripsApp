@@ -20,7 +20,7 @@
       <div class="input-group mb-3">
         <input type="text" class="form-control" placeholder="Size" [(ngModel)]="productForm.size">
       </div>
-      <button class="btn btn-danger">Delete</button>
+      <button class="btn btn-danger" (click)="clearForm">Delete</button>
       <button class="btn btn-primary" (click)="addProduct()">Save</button>
     </div>
     <div class="col col-lg-8 col-md-12">

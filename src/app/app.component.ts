@@ -35,5 +35,17 @@ export class AppComponent {
 
   addProduct() {
     this.productList.push(this.productForm);
+    this.clearForm();
+    alert('Product added :)');
+  }
+  clearForm() {
+    this.productForm = {
+      name: '',
+      branch: '',
+      category: '',
+      price: 0,
+      lot: 0,
+      size: ''
+    }
   }
 }
