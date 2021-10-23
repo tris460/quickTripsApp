@@ -8,16 +8,20 @@ import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
 })
 export class AppComponent {
   title = 'firebaseProyect';
-  productList: AngularFireList<any>;
+  user: string;
+  password: string;
+  userList: AngularFireList<any>;
 
   constructor(public firebase:AngularFireDatabase){
-    this.productList = this.firebase.list('products');
+    this.userList = this.firebase.list('user');
+    this.user = '';
+    this.password = '';
   }
 
-  addProduct(){
-    this.productList.push({
-      name: 'Coca-Cola',
-      price: 12
-    });
+  addUser() {
+    this.userList.push({
+      name: this.user,
+      pass: this.password
+    })
   }
 }
