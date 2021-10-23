@@ -25,7 +25,24 @@
     </div>
     <div class="col col-lg-8 col-md-12">
       <h1>Products</h1>
-      <p>Product List</p>
+      <table class="table table-light table-striped">
+        <tr class="table-light">
+          <th class="table-light">Name</th>
+          <th class="table-light">Branch</th>
+          <th class="table-light">Category</th>
+          <th class="table-light">Price</th>
+          <th class="table-light">Lot</th>
+          <th class="table-light">Size</th>
+        </tr>
+        <tr *ngFor="let p of product">
+          <td>{{p.name}}</td>
+          <td>{{p.branch}}</td>
+          <td>{{p.category}}</td>
+          <td>{{p.price}}</td>
+          <td>{{p.lot}}</td>
+          <td>{{p.size}}</td>
+        </tr>
+      </table>
     </div>
   </div>
 </div>
