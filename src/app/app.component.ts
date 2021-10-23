@@ -10,6 +10,14 @@ export class AppComponent {
   title = 'firebaseProyect';
   productList: AngularFireList<any>;
   product: Array<any>;
+  productForm = {
+    name: '',
+    branch: '',
+    category: '',
+    price: 0,
+    lot: 0,
+    size: ''
+  }
 
   constructor(public firebase:AngularFireDatabase){
     // Crea una tabla en la base de datos
@@ -26,9 +34,6 @@ export class AppComponent {
   }
 
   addProduct() {
-    this.productList.push({
-      name: 'Coca-Cola',
-      price: 10
-    })
+    this.productList.push(this.productForm);
   }
 }
