@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,16 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'firebaseProyect';
+  productList: AngularFireList<any>;
+
+  constructor(public firebase:AngularFireDatabase){
+    this.productList = this.firebase.list('products');
+  }
+
+  addProduct(){
+    this.productList.push({
+      name: 'Coca-Cola',
+      price: 12
+    });
+  }
 }
