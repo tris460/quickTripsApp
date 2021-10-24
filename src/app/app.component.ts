@@ -11,6 +11,7 @@ export class AppComponent {
   productList: AngularFireList<any>;
   product: Array<any>;
   productForm = {
+    $key: '',
     name: '',
     branch: '',
     category: '',
@@ -25,12 +26,14 @@ export class AppComponent {
     this.product = [];
     // Obtiene los productos que haya registrados en la BD
     this.productList.snapshotChanges().subscribe(item => {
+      this.product = [];
       item.forEach(producto => {
-        let x = producto.payload.toJSON();
+        let x: any = producto.payload.toJSON();
+        x['$key'] = producto.key;
         this.product.push(x);
       });
+      console.log('Products:', this.product);
     });
-    console.log('Products:', this.product);
   }
 
   addProduct() {
@@ -40,6 +43,7 @@ export class AppComponent {
   }
   clearForm() {
     this.productForm = {
+      $key: '',
       name: '',
       branch: '',
       category: '',
