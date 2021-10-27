@@ -10,21 +10,30 @@ export class AppComponent {
   title = 'firebaseProyect';
   productList: AngularFireList<any>;
   product: Array<any>;
-  productForm = {
-    $key: '',
-    name: '',
-    branch: '',
-    category: '',
-    price: 0,
-    lot: 0,
-    size: ''
+  productForm : {
+    $key?: string,
+    name: string,
+    branch: string,
+    category: string,
+    price: number,
+    lot: number,
+    size: string,
   }
 
   constructor(public firebase:AngularFireDatabase){
-    // Crea una tabla en la base de datos
+    this.productForm = {
+      $key: '',
+      name: '',
+      branch: '',
+      category: '',
+      price: 0,
+      lot: 0,
+      size: ''
+    }
+    // Create a table in the DB
     this.productList = this.firebase.list('product');
     this.product = [];
-    // Obtiene los productos que haya registrados en la BD
+    // Get the products registred
     this.productList.snapshotChanges().subscribe(item => {
       this.product = [];
       item.forEach(producto => {
@@ -36,10 +45,19 @@ export class AppComponent {
     });
   }
 
-  addProduct() {
-    this.productList.push(this.productForm);
-    this.clearForm();
-    alert('Product added :)');
+  saveProduct() {
+    if(this.productForm.$key === '') { // If is a new product
+      this.productList.push(this.productForm);
+      this.clearForm();
+      alert('Product saved');
+    } else { // If the product is being updated
+      const keyTemp = this.productForm.$key ? this.productForm.$key : '';
+      const productTemp = this.productForm;
+      delete productTemp.$key; // Delete de key because we can't update a product if it has a key
+      this.productList.update(keyTemp, this.productForm);
+      this.clearForm();
+      alert('Product updated');
+    }
   }
   clearForm() {
     this.productForm = {
@@ -51,5 +69,8 @@ export class AppComponent {
       lot: 0,
       size: ''
     }
+  }
+  editProduct(productToEdit: any) {
+    this.productForm = productToEdit;
   }
 }

@@ -21,8 +21,8 @@
       <div class="input-group mb-3">
         <input type="text" class="form-control" placeholder="Size" [(ngModel)]="productForm.size">
       </div>
-      <button class="btn btn-danger" (click)="clearForm">Delete</button>
-      <button class="btn btn-primary" (click)="addProduct()">Save</button>
+      <button class="btn btn-danger" (click)="clearForm()">Delete</button>
+      <button class="btn btn-primary" (click)="saveProduct()">Save</button>
     </div>
     <div class="col col-lg-8 col-md-12">
       <h1>Products</h1>
@@ -47,7 +47,7 @@
             <td>{{p.lot}}</td>
             <td>{{p.size}}</td>
             <td>
-              <button class="btn btn-success">Edit</button>
+              <button class="btn btn-success" (click)="editProduct(p)">Edit</button>
               <button class="btn btn-danger">Delete</button>
             </td>
           </tr>
