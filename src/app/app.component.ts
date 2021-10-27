@@ -47,13 +47,13 @@ export class AppComponent {
 
   saveProduct() {
     if(this.productForm.$key === '') { // If is a new product
+      delete this.productForm.$key; // Delete de key before add a product
       this.productList.push(this.productForm);
       this.clearForm();
       alert('Product saved');
     } else { // If the product is being updated
       const keyTemp = this.productForm.$key ? this.productForm.$key : '';
-      const productTemp = this.productForm;
-      delete productTemp.$key; // Delete de key because we can't update a product if it has a key
+      delete this.productForm.$key; // Delete de key because we can't update a product if it has a key
       this.productList.update(keyTemp, this.productForm);
       this.clearForm();
       alert('Product updated');
@@ -72,5 +72,8 @@ export class AppComponent {
   }
   editProduct(productToEdit: any) {
     this.productForm = productToEdit;
+  }
+  removeProduct(key: any) {
+    this.productList.remove(key);
   }
 }

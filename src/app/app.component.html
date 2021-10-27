@@ -48,7 +48,7 @@
             <td>{{p.size}}</td>
             <td>
               <button class="btn btn-success" (click)="editProduct(p)">Edit</button>
-              <button class="btn btn-danger">Delete</button>
+              <button class="btn btn-danger" (click)="removeProduct(p.$key)">Delete</button>
             </td>
           </tr>
         </tbody>
