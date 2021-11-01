@@ -45,6 +45,15 @@
   border-radius: 5px;
   font-size: 15px;
   padding: 5%;
+  text-decoration: none;;
+  text-align: center;
+  font-weight: bolder;
+}
+.back__button:hover {
+  cursor: pointer;
+}
+.back__button:active {
+  box-shadow: 2px 2px 2px rgb(0, 0, 0);
 }
 .back__log-in {
   grid-column: 8/12;
@@ -54,20 +63,21 @@
   grid-row: 2;
   grid-column: 1/-1;
   position: relative;
-  bottom: 29em;
-  margin-bottom: -29em;
+  // bottom: 29em;
+  // margin-bottom: -29em;
 }
 .sign-up {
   grid-column: 3/7;
   background-color: #FFF;
   padding: 20% 10%;
-  // display: none;
+  box-shadow: 2px 3px 7px 3px rgba(0,0,0,0.5);
 }
 .log-in {
   grid-column: 7/11;
   background-color: #FFF;
   padding: 30% 10%;
-  display: none;
+  // display: none;
+  box-shadow: 2px 3px 7px 3px rgba(0,0,0,0.5);
 }
 .form {
   grid-column: 1/-1;
