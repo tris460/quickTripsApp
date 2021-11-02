@@ -28,8 +28,18 @@ export class AppComponent {
       username: this.username,
       email: this.email,
       password: this.password
-    })
+    });
+    alert('User added correctly');
+    this.clearForm();
   }
+  clearForm() {
+    this.username = '';
+    this.email = '';
+    this.password = '';
+    this.repeatPassword = '';
+  }
+
+  // Styes
   changePositionSignUp() {
     const signUp = document.getElementById('sing-up-front') || document.createElement('div');
     const logIn = document.getElementById('log-in-front') || document.createElement('div');
