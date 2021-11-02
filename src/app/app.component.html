@@ -17,13 +17,13 @@
       <section class="sign-up grid-ind" id="sing-up-front">
         <h2 class="title front-title">SIGN UP</h2>
         <div class="form grid-ind">
-          <input type="text" placeholder="Full Name" class="form__input">
-          <input type="email" placeholder="Email" class="form__input">
-          <input type="password" placeholder="Password" class="form__input">
-          <input type="password" placeholder="Repeat Password" class="form__input">
+          <input type="text" placeholder="Full Name" class="form__input" [(ngModel)]="username">
+          <input type="email" placeholder="Email" class="form__input" [(ngModel)]="email">
+          <input type="password" placeholder="Password" class="form__input" [(ngModel)]="password">
+          <input type="password" placeholder="Repeat Password" class="form__input" [(ngModel)]="repeatPassword">
         </div>
         <div class="button-div grid-ind">
-          <button class="front__button">SIGN UP</button>
+          <button class="front__button" (click)="addUser()">SIGN UP</button>
         </div>
       </section>
       <section class="log-in grid-ind" id="log-in-front">

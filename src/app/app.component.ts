@@ -12,6 +12,7 @@ export class AppComponent {
   username: string;
   email: string;
   password: string;
+  repeatPassword: string;
   userList: AngularFireList<any>;
 
   constructor(public firebase:AngularFireDatabase){
@@ -19,6 +20,7 @@ export class AppComponent {
     this.username = '';
     this.email = '';
     this.password = '';
+    this.repeatPassword = '';
   }
 
   addUser() {
