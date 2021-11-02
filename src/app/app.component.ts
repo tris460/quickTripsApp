@@ -24,4 +24,20 @@ export class AppComponent {
       pass: this.password
     })
   }
+  changePositionSignUp() {
+    const signUp = document.getElementById('sing-up-front') || document.createElement('div');
+    const logIn = document.getElementById('log-in-front') || document.createElement('div');
+    signUp.style.left = '100%';
+    signUp.style.zIndex = '0';
+    logIn.style.left = '0%';
+    logIn.style.zIndex = '1';
+  }
+  changePositionLogIn() {
+    const signUp = document.getElementById('sing-up-front') || document.createElement('div');
+    const logIn = document.getElementById('log-in-front') || document.createElement('div');
+    signUp.style.left = '0%';
+    signUp.style.zIndex = '1';
+    logIn.style.left = '-100%';
+    logIn.style.zIndex = '0';
+  }
 }

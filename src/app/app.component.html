@@ -14,7 +14,7 @@
     </div>
   </div>
     <div class="front grid">
-      <section class="sign-up grid-ind">
+      <section class="sign-up grid-ind" id="sing-up-front">
         <h2 class="title front-title">SIGN UP</h2>
         <div class="form grid-ind">
           <input type="text" placeholder="Full Name" class="form__input">
@@ -23,17 +23,17 @@
           <input type="password" placeholder="Repeat Password" class="form__input">
         </div>
         <div class="button-div grid-ind">
-          <button class="front__button">SIGN UP</button>
+          <button class="front__button" (click)="changePositionSignUp()">SIGN UP</button>
         </div>
       </section>
-      <section class="log-in grid-ind">
+      <section class="log-in grid-ind" id="log-in-front">
         <h2 class="title front-title">LOG IN</h2>
         <div class="form grid-ind">
           <input type="text" placeholder="Email" class="form__input">
           <input type="password" placeholder="Password" class="form__input">
         </div>
         <div class="button-div grid-ind">
-          <button class="front__button">LOG IN</button>
+          <button class="front__button" (click)="changePositionLogIn()">LOG IN</button>
         </div>
       </section>
     </div>
