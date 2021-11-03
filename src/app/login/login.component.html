@@ -36,12 +36,12 @@
         <section class="log-in grid-ind" id="log-in-front">
           <h2 class="title front-title">LOG IN</h2>
           <div class="form grid-ind">
-            <input type="email" placeholder="Email" class="form__input" required="">
-            <input type="password" placeholder="Password" class="form__input" required="">
-            <p class="form__error-login">The email or password is incorrect</p>
+            <input type="email" placeholder="Email" class="form__input" [(ngModel)]="emailLogIn" required="">
+            <input type="password" placeholder="Password" class="form__input" [(ngModel)]="pass" required="">
+            <p id="error__logIn" class="form__error-login">The email or password is incorrect</p>
           </div>
           <div class="button-div grid-ind">
-            <button type="submit" class="front__button">LOG IN</button>
+            <button type="submit" class="front__button" (click)="logIn()">LOG IN</button>
           </div>
         </section>
       </div>

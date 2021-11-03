@@ -7,11 +7,16 @@ import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
+  // For the register section
   username: string;
   email: string;
   password: string;
   repeatPassword: string;
   userList: AngularFireList<any>;
+  // To log in
+  emailLogIn: string;
+  pass: string;
+  users: Array<any>;
   
   constructor(public firebase:AngularFireDatabase) { 
     this.userList = this.firebase.list('user');
@@ -19,6 +24,17 @@ export class LoginComponent implements OnInit {
     this.email = '';
     this.password = '';
     this.repeatPassword = '';
+    this.emailLogIn = '';
+    this.pass = '';
+    this.users = [];
+
+    // Get users registred
+    this.userList.snapshotChanges().subscribe(user => {
+      user.forEach(u => {
+        let x = u.payload.toJSON();
+        this.users.push(x);
+      });
+    });
   }
 
   ngOnInit(): void {
@@ -32,6 +48,18 @@ export class LoginComponent implements OnInit {
       });
       alert('User added correctly');
       this.clearForm();
+    }
+  }
+  logIn() {
+    const errorLogIn = document.getElementById('error__logIn') || document.createElement('p');
+    for(let i = 0; i < this.users.length; i++) {
+      if(this.emailLogIn === this.users[i].email && this.pass === this.users[i].password) {
+        alert('Correct credentials');
+        errorLogIn.style.display = 'none';
+        break;
+      } else {
+        errorLogIn.style.display = 'block';
+      }
     }
   }
   clearForm() {
