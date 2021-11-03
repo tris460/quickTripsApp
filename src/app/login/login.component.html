@@ -18,16 +18,16 @@
           <h2 class="title front-title">SIGN UP</h2>
           <div class="form grid-ind">
             <input type="text" placeholder="Full Name" class="form__input" [(ngModel)]="username" required="">
-            <p class="form__error-name">This field is required</p>
+            <p id="errorName" class="form__error-name">This field is required</p>
             <input type="email" placeholder="Email" class="form__input" [(ngModel)]="email" required="">
-            <p class="form__error-email-req">This field is required</p>
-            <p class="form__error-email-char">The email must have '@' and '.'</p>
+            <p id="errorEmailReq" class="form__error-email-req">This field is required</p>
+            <p id="errorEmailChar" class="form__error-email-char">The email must have '@' and '.'</p>
             <input type="password" placeholder="Password" class="form__input" [(ngModel)]="password" required="" minlength="8">
-            <p class="form__error-password-req">This field is required</p>
-            <p class="form__error-password-char">The password must have at least 8 characters</p>
+            <p id="errorPassReq" class="form__error-password-req">This field is required</p>
+            <p id="errorPassChar" class="form__error-password-char">The password must have at least 8 characters</p>
             <input type="password" placeholder="Repeat Password" class="form__input" [(ngModel)]="repeatPassword" required="">
-            <p class="form__error-repeatPassword-req">This field is required</p>
-            <p class="form__error-repeatPassword-char">The passwords don't match</p>
+            <p id="errorRepPassReq" class="form__error-repeatPassword-req">This field is required</p>
+            <p id="errorRepPassChar" class="form__error-repeatPassword-char">The passwords don't match</p>
           </div>
           <div class="button-div grid-ind">
             <button type="submit" class="front__button" (click)="addUser()">SIGN UP</button>

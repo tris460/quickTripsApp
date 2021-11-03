@@ -43,6 +43,58 @@ export class LoginComponent implements OnInit {
     this.repeatPassword = '';
   }
   validateFieldsSignIn() {
+    const errorName = document.getElementById('errorName') || document.createElement('p');
+    const errorEmailReq = document.getElementById('errorEmailReq') || document.createElement('p');
+    const errorEmailChar = document.getElementById('errorEmailChar') || document.createElement('p');
+    const errorPassReq = document.getElementById('errorPassReq') || document.createElement('p');
+    const errorPassChar = document.getElementById('errorPassChar') || document.createElement('p');
+    const errorRepPassReq = document.getElementById('errorRepPassReq') || document.createElement('p');
+    const errorRepPassChar = document.getElementById('errorRepPassChar') || document.createElement('p');
+    const validateEmail = /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/;
+    const validatePass = /^.{8,20}$/;
+
+    if(this.username === '') {
+      errorName.style.display = 'block';
+    } else {
+      errorName.style.display = 'none';
+    }
+
+    if(this.email === '') {
+      errorEmailReq.style.display = 'block';
+    } else {
+      errorEmailReq.style.display = 'none';
+    }
+
+    if(validateEmail.test(this.email)) {
+      errorEmailChar.style.display = 'none';
+    } else {
+      errorEmailChar.style.display = 'block';
+    }
+
+    if(this.password === '') {
+      errorPassReq.style.display = 'block';
+    } else {
+      errorPassReq.style.display = 'none';
+    }
+
+    if(validatePass.test(this.password)) {
+      errorPassChar.style.display = 'none';
+    } else {
+      errorPassChar.style.display = 'block';
+    }
+
+    if(this.repeatPassword === '') {
+      errorRepPassReq.style.display = 'block';
+    } else {
+      errorRepPassReq.style.display = 'none';
+    }
+
+    if(this.password === this.repeatPassword) {
+      errorRepPassChar.style.display = 'none';
+    } else {
+      errorRepPassChar.style.display = 'block';
+    }
+
     if(this.username === '' || this.email === '' || this.password === '' || this.repeatPassword === '') {
       return false;
     } else {
