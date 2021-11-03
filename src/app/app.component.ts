@@ -24,19 +24,30 @@ export class AppComponent {
   }
 
   addUser() {
-    this.userList.push({
-      username: this.username,
-      email: this.email,
-      password: this.password
-    });
-    alert('User added correctly');
-    this.clearForm();
+    if(this.validateFieldsSignIn()) {
+      this.userList.push({
+        username: this.username,
+        email: this.email,
+        password: this.password
+      });
+      alert('User added correctly');
+      this.clearForm();
+    } else {
+      alert('You need to complete each field');
+    }
   }
   clearForm() {
     this.username = '';
     this.email = '';
     this.password = '';
     this.repeatPassword = '';
+  }
+  validateFieldsSignIn() {
+    if(this.username === '' || this.email === '' || this.password === '' || this.repeatPassword === '') {
+      return false;
+    } else {
+      return true;
+    }
   }
 
   // Styes
