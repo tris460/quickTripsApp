@@ -32,8 +32,6 @@ export class LoginComponent implements OnInit {
       });
       alert('User added correctly');
       this.clearForm();
-    } else {
-      alert('You need to complete each field');
     }
   }
   clearForm() {
@@ -52,15 +50,18 @@ export class LoginComponent implements OnInit {
     const errorRepPassChar = document.getElementById('errorRepPassChar') || document.createElement('p');
     const validateEmail = /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/;
     const validatePass = /^.{8,20}$/;
+    let validator = true;
 
     if(this.username === '') {
       errorName.style.display = 'block';
+      validator = false;
     } else {
       errorName.style.display = 'none';
     }
 
     if(this.email === '') {
       errorEmailReq.style.display = 'block';
+      validator = false;
     } else {
       errorEmailReq.style.display = 'none';
     }
@@ -69,10 +70,12 @@ export class LoginComponent implements OnInit {
       errorEmailChar.style.display = 'none';
     } else {
       errorEmailChar.style.display = 'block';
+      validator = false;
     }
 
     if(this.password === '') {
       errorPassReq.style.display = 'block';
+      validator = false;
     } else {
       errorPassReq.style.display = 'none';
     }
@@ -81,10 +84,12 @@ export class LoginComponent implements OnInit {
       errorPassChar.style.display = 'none';
     } else {
       errorPassChar.style.display = 'block';
+      validator = false;
     }
 
     if(this.repeatPassword === '') {
       errorRepPassReq.style.display = 'block';
+      validator = false;
     } else {
       errorRepPassReq.style.display = 'none';
     }
@@ -93,12 +98,13 @@ export class LoginComponent implements OnInit {
       errorRepPassChar.style.display = 'none';
     } else {
       errorRepPassChar.style.display = 'block';
+      validator = false;
     }
 
-    if(this.username === '' || this.email === '' || this.password === '' || this.repeatPassword === '') {
-      return false;
+    if(validator) {
+      return validator;
     } else {
-      return true;
+      return validator;
     }
   }
 
