@@ -8,7 +8,6 @@ import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
 })
 export class AppComponent {
   title = 'firebaseProyect';
-
   username: string;
   email: string;
   password: string;

@@ -104,3 +104,12 @@
   font-size: 15px;
   padding: 5%;
 }
+.form__error-name, .form__error-email-req, .form__error-email-char,
+.form__error-password-req, .form__error-password-char, .form__error-repeatPassword-req,
+.form__error-repeatPassword-char, .form__error-login {
+  grid-column: 1/-1;
+  padding: 0%;
+  margin: 0%;
+  color:rgb(255, 0, 0);
+  display: none;
+}
