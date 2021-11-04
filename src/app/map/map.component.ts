@@ -9,8 +9,6 @@ declare const L: any;
 })
 export class MapComponent implements OnInit {
   title = 'LocationApp';
-
-  constructor() { }
   
   // What to do when the app is charged 
   ngOnInit(){
