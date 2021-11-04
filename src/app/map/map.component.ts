@@ -12,10 +12,10 @@ export class MapComponent implements OnInit {
 
   constructor() { }
   
-  // What to do when the app is carged 
+  // What to do when the app is charged 
   ngOnInit(){
     if(!navigator.geolocation) {
-      alert("Geolocation is nos available");
+      alert("Geolocation is not available");
     } 
     navigator.geolocation.getCurrentPosition((position) => {
       const coords = position.coords;
