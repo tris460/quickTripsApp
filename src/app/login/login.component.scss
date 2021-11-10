@@ -113,3 +113,32 @@
     color:rgb(255, 0, 0);
     display: none;
   }
+
+  @media only screen and (max-width: 1000px) {
+    .sign-up {
+      grid-column: 3/7;
+      background-color: #FFF;
+      padding: 20% 10%;
+      box-shadow: 2px 3px 7px 3px rgba(0,0,0,0.5);
+      position: relative;
+      bottom: 95%;
+      z-index: 1;
+    }
+    .log-in {
+      grid-column: 7/11;
+      background-color: #FFF;
+      padding: 30% 10%;
+      box-shadow: 2px 3px 7px 3px rgba(0,0,0,0.5);
+      position: relative;
+      right: 100%;
+      bottom: 95%;
+    }
+    .back__sign-up {
+      grid-column: 2/6;
+      padding: 10% 5%;
+    }
+    .back__log-in {
+      grid-column: 8/12;
+      padding: 10% 5%;
+    }
+  }
