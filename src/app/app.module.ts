@@ -11,6 +11,7 @@ import { LoginComponent } from './login/login.component';
 import { MapComponent } from './map/map.component';
 import { AppRoutingModule } from './app-routing.module';
 import { TravelsComponent } from './travels/travels.component';
+import { AngularFireAuthModule } from 'angularfire2/auth';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { TravelsComponent } from './travels/travels.component';
     FormsModule,
     RouterModule,
     AppRoutingModule,
+    AngularFireAuthModule,
     AngularFireDatabaseModule,
     AngularFireModule.initializeApp(environment.firebaseConfig)
   ],

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
+import { AngularFireAuth } from 'angularfire2/auth';
+import * as firebaseI from 'firebase/app';
 
 @Component({
   selector: 'app-login',
@@ -19,7 +21,7 @@ export class LoginComponent implements OnInit {
   pass: string;
   users: Array<any>;
   
-  constructor(public firebase:AngularFireDatabase, private router:Router) { 
+  constructor(public firebase:AngularFireDatabase, private router:Router, public authFirebase:AngularFireAuth) { 
     this.userList = this.firebase.list('user');
     this.username = '';
     this.email = '';
@@ -60,6 +62,9 @@ export class LoginComponent implements OnInit {
     } else {
       errorLogIn.style.display = 'block';
     }
+  }
+  loginFacebook() {
+    this.authFirebase.auth.signInWithPopup(new firebaseI.auth.FacebookAuthProvider())
   }
   clearForm() {
     this.username = '';
