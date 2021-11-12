@@ -35,6 +35,10 @@ export class MapComponent implements OnInit {
       })
       marker.bindPopup("<b>You're here</b>").openPopup();
 
+      mymap.on('click', (object: any) => {
+        L.marker(object.latlng).addTo(mymap);
+      });
+
       let popup = L.popup()
         .setLatLng([coords.latitude, coords.longitude])
         .setContent('You are here')
