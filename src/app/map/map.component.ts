@@ -35,8 +35,11 @@ export class MapComponent implements OnInit {
       })
       marker.bindPopup("<b>You're here</b>").openPopup();
 
+      // Add marker when the user clicks
+      let clickMarkers = L.layerGroup().addTo(mymap);
       mymap.on('click', (object: any) => {
-        L.marker(object.latlng).addTo(mymap);
+        clickMarkers.clearLayers();
+        clickMarkers.addLayer(L.marker(object.latlng));
       });
 
       let popup = L.popup()
