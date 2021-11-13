@@ -1,144 +1,120 @@
 .grid {
-    display: grid;
-    grid-template-columns: repeat(12, 1fr);
-  }
-  .button-div {
-    grid-column: 1/-1;
-    max-height: 40px;
-  }
-  .grid-ind {
-    display: grid;
-    grid-template-columns: repeat(6, 1fr);
-  }
-  .container {
-    font-family: 'Zen Kaku Gothic Antique', sans-serif;
-    padding: 10% 0%;
-  }
-  .back-grid {
-    grid-column: 2/-2;
-  }
-  .back-screen {
-    background: rgba(58, 50, 50, 0.7);
-    color: #FFFFFF;
-  }
-  .back__sign-up {
-    grid-column: 2/6;
-    padding: 15% 5%;
-  }
-  .title {
-    font-size: 28px;
-    grid-column: 1/-1;
-  }
-  .front-title {
-    color:rgb(255, 110, 110);
-    font-weight: bolder;
-  }
-  .back__text {
-    font-size: 20px;
-    grid-column: 1/-1;
-  }
-  .back__button {
-    color: #FFF;
-    border: 1px solid #FFF;
-    background-color: transparent;
-    grid-column: 4/-1;
-    border-radius: 5px;
-    font-size: 15px;
-    padding: 5%;
-    text-decoration: none;;
-    text-align: center;
-    font-weight: bolder;
-  }
-  .back__button:hover {
-    cursor: pointer;
-  }
-  .back__button:active {
-    box-shadow: 2px 2px 2px rgb(0, 0, 0);
-  }
-  .back__log-in {
-    grid-column: 8/12;
-    padding: 15% 5%;
-  }
-  .front {
-    grid-row: 2;
-    grid-column: 1/-1;
-    position: relative;
-    // bottom: 29em;
-    // margin-bottom: -29em;
-  }
-  .sign-up {
-    grid-column: 3/7;
-    background-color: #FFF;
-    padding: 20% 10%;
-    box-shadow: 2px 3px 7px 3px rgba(0,0,0,0.5);
-    position: relative;
-    bottom: 90%;
-    z-index: 1;
-  }
-  .log-in {
-    grid-column: 7/11;
-    background-color: #FFF;
-    padding: 30% 10%;
-    box-shadow: 2px 3px 7px 3px rgba(0,0,0,0.5);
-    position: relative;
-    right: 100%;
-    bottom: 90%;
-  }
-  .form {
-    grid-column: 1/-1;
-    padding-bottom: 10%;
-  }
-  .form__input {
-    grid-column: 1/-1;
-    margin: 5px;
-    padding: 2%;
-    border: none;
-    border-bottom: 1px solid rgb(160, 160, 160); 
-    font-size: 20px;
-  }
-  .front__button {
-    grid-column: 4/7;
-    color: #FFF;
-    background-color: rgb(255, 110, 110);
-    border-radius: 5px;
-    font-size: 15px;
-    padding: 5%;
-  }
-  .form__error-name, .form__error-email-req, .form__error-email-char,
-  .form__error-password-req, .form__error-password-char, .form__error-repeatPassword-req,
-  .form__error-repeatPassword-char, .form__error-login {
-    grid-column: 1/-1;
-    padding: 0%;
-    margin: 0%;
-    color:rgb(255, 0, 0);
-    display: none;
-  }
-
-  @media only screen and (max-width: 1000px) {
-    .sign-up {
-      grid-column: 3/7;
-      background-color: #FFF;
-      padding: 20% 10%;
-      box-shadow: 2px 3px 7px 3px rgba(0,0,0,0.5);
-      position: relative;
-      bottom: 95%;
-      z-index: 1;
-    }
-    .log-in {
-      grid-column: 7/11;
-      background-color: #FFF;
-      padding: 30% 10%;
-      box-shadow: 2px 3px 7px 3px rgba(0,0,0,0.5);
-      position: relative;
-      right: 100%;
-      bottom: 95%;
-    }
-    .back__sign-up {
-      grid-column: 2/6;
-      padding: 10% 5%;
-    }
-    .back__log-in {
-      grid-column: 8/12;
-      padding: 10% 5%;
-    }
-  }
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+}
+.button-div {
+  grid-column: 1/-1;
+  max-height: 40px;
+}
+.sign-in-with-div {
+  grid-column: 1/-1;
+  text-align: center;
+}
+.sign-in-with__img {
+  max-width: 45px;
+}
+.grid-ind {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+}
+.container {
+  font-family: 'Zen Kaku Gothic Antique', sans-serif;
+  padding: 10% 0%;
+}
+.back-grid {
+  grid-column: 2/-2;
+}
+.back-screen {
+  background: rgba(58, 50, 50, 0.7);
+  color: #FFFFFF;
+}
+.back__sign-up {
+  grid-column: 2/6;
+  padding: 15% 5%;
+}
+.title {
+  font-size: 28px;
+  grid-column: 1/-1;
+}
+.front-title {
+  color:rgb(255, 110, 110);
+  font-weight: bolder;
+}
+.back__text {
+  font-size: 20px;
+  grid-column: 1/-1;
+}
+.back__button {
+  color: #FFF;
+  border: 1px solid #FFF;
+  background-color: transparent;
+  grid-column: 4/-1;
+  border-radius: 5px;
+  font-size: 15px;
+  padding: 5%;
+  text-decoration: none;;
+  text-align: center;
+  font-weight: bolder;
+}
+.back__button:hover {
+  cursor: pointer;
+}
+.back__button:active {
+  box-shadow: 2px 2px 2px rgb(0, 0, 0);
+}
+.back__log-in {
+  grid-column: 8/12;
+  padding: 15% 5%;
+}
+.front {
+  grid-row: 2;
+  grid-column: 1/-1;
+  position: relative;
+}
+.sign-up {
+  grid-column: 3/7;
+  background-color: #FFF;
+  padding: 15% 10%;
+  box-shadow: 2px 3px 7px 3px rgba(0,0,0,0.5);
+  position: relative;
+  top: -75%;
+  z-index: 1;
+}
+.log-in {
+  grid-column: 7/11;
+  background-color: #FFF;
+  padding: 30% 10%;
+  box-shadow: 2px 3px 7px 3px rgba(0,0,0,0.5);
+  position: relative;
+  right: 100%;
+  top: -75%;
+}
+.form {
+  grid-column: 1/-1;
+  padding-bottom: 10%;
+}
+.form__input {
+  grid-column: 1/-1;
+  margin: 5px;
+  padding: 2%;
+  border: none;
+  border-bottom: 1px solid rgb(160, 160, 160); 
+  font-size: 20px;
+}
+.front__button {
+  grid-column: 4/7;
+  color: #FFF;
+  background-color: rgb(255, 110, 110);
+  border-radius: 5px;
+  font-size: 15px;
+  padding: 5%;
+}
+.form__error-name, .form__error-email-req, .form__error-email-char,
+.form__error-password-req, .form__error-password-char, .form__error-repeatPassword-req,
+.form__error-repeatPassword-char, .form__error-login {
+  grid-column: 1/-1;
+  padding: 0%;
+  margin: 0%;
+  color:rgb(255, 0, 0);
+  display: none;
+}
