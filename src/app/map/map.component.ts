@@ -29,12 +29,22 @@ export class MapComponent implements OnInit {
         accessToken: 'pk.eyJ1IjoidHJpczQ2MCIsImEiOiJja3U5NGh3ZjYwMHdvMnNwNGRkaW5mOWl6In0.QmylwVimyPHfEpm0TQob3A'
       }).addTo(mymap);
 
-      let marker = L.marker(latLong).addTo(mymap);
+      let marker = L.marker(latLong, { draggable: true }).addTo(mymap);
+      marker.on('dragend', (object: any) => {
+        alert('Lat ' + object.target._latlng.lat + ' Lon' + object.target._latlng.lng);
+      })
       marker.bindPopup("<b>You're here</b>").openPopup();
+
+      // Add marker when the user clicks
+      let clickMarkers = L.layerGroup().addTo(mymap);
+      mymap.on('click', (object: any) => {
+        clickMarkers.clearLayers();
+        clickMarkers.addLayer(L.marker(object.latlng));
+      });
 
       let popup = L.popup()
         .setLatLng([coords.latitude, coords.longitude])
-        .setContent('I am a popup')
+        .setContent('You are here')
         .openOn(mymap);
 
       // Add leaflet-routing-machine

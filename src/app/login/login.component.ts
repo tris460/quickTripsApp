@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
+import { AngularFireAuth } from 'angularfire2/auth';
+import * as firebaseI from 'firebase/app';
 
 @Component({
   selector: 'app-login',
@@ -19,7 +21,7 @@ export class LoginComponent implements OnInit {
   pass: string;
   users: Array<any>;
   
-  constructor(public firebase:AngularFireDatabase, private router:Router) { 
+  constructor(public firebase:AngularFireDatabase, private router:Router, public authFirebase:AngularFireAuth) { 
     this.userList = this.firebase.list('user');
     this.username = '';
     this.email = '';
@@ -53,14 +55,16 @@ export class LoginComponent implements OnInit {
   }
   logIn() {
     const errorLogIn = document.getElementById('error__logIn') || document.createElement('p');
-    for(let i = 0; i < this.users.length; i++) {
-      if(this.emailLogIn === this.users[i].email && this.pass === this.users[i].password) {
-        this.router.navigateByUrl('/map');
-        break;
-      } else {
-        errorLogIn.style.display = 'block';
-      }
+    const correctUser = this.users.filter(u => 
+      u.email === this.emailLogIn && u.password === this.pass);
+    if(correctUser.length > 0) {
+      this.router.navigateByUrl('/map');
+    } else {
+      errorLogIn.style.display = 'block';
     }
+  }
+  loginFacebook() {
+    this.authFirebase.auth.signInWithPopup(new firebaseI.auth.FacebookAuthProvider())
   }
   clearForm() {
     this.username = '';
