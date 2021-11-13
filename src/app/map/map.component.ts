@@ -40,6 +40,7 @@ export class MapComponent implements OnInit {
       mymap.on('click', (object: any) => {
         clickMarkers.clearLayers();
         clickMarkers.addLayer(L.marker(object.latlng));
+        route.spliceWaypoints(1, 1, object.latlng);
       });
 
       let popup = L.popup()
@@ -48,7 +49,7 @@ export class MapComponent implements OnInit {
         .openOn(mymap);
 
       // Add leaflet-routing-machine
-      L.Routing.control({
+      const route = L.Routing.control({
         waypoints: [
           L.latLng(coords.latitude, coords.longitude),
           L.latLng(21.883623132655234, -102.295269894441786)
@@ -69,6 +70,7 @@ export class MapComponent implements OnInit {
         results.clearLayers();
         for(let i = data.results.length - 1; i >= 0; i--) {
           results.addLayer(L.marker(data.results[i].latlng));
+          route.spliceWaypoints(1, 1, data.results[i].latlng);
         }
         
       })
