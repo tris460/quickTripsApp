@@ -63,8 +63,12 @@ export class LoginComponent implements OnInit {
       errorLogIn.style.display = 'block';
     }
   }
-  loginFacebook() {
+  signInFacebook() {
     this.authFirebase.auth.signInWithPopup(new firebaseI.auth.FacebookAuthProvider())
+  }
+  loginFacebook() {
+    const provider = new firebaseI.auth.FacebookAuthProvider();
+    this.authFirebase.auth.signInWithPopup(provider);
   }
   clearForm() {
     this.username = '';
