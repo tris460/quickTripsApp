@@ -49,8 +49,7 @@ export class LoginComponent implements OnInit {
         email: this.email,
         password: this.password
       });
-      alert('User added correctly');
-      this.clearForm();
+      this.router.navigateByUrl('/map');
     }
   }
   logIn() {
