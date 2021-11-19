@@ -18,7 +18,7 @@ export class MapComponent implements OnInit {
     navigator.geolocation.getCurrentPosition((position) => {
       const coords = position.coords;
       const latLong = [coords.latitude, coords.longitude];
-      const mymap = L.map('mapid').setView(latLong, 8);
+      const mymap = L.map('mapid').setView(latLong, 13);
 
       L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
         attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
@@ -29,17 +29,13 @@ export class MapComponent implements OnInit {
         accessToken: 'pk.eyJ1IjoidHJpczQ2MCIsImEiOiJja3U5NGh3ZjYwMHdvMnNwNGRkaW5mOWl6In0.QmylwVimyPHfEpm0TQob3A'
       }).addTo(mymap);
 
-      let marker = L.marker(latLong, { draggable: true }).addTo(mymap);
-      marker.on('dragend', (object: any) => {
-        alert('Lat ' + object.target._latlng.lat + ' Lon' + object.target._latlng.lng);
-      })
-      marker.bindPopup("<b>You're here</b>").openPopup();
+      // Save the results of search/click a place
+      let results = L.layerGroup().addTo(mymap);
 
       // Add marker when the user clicks
-      let clickMarkers = L.layerGroup().addTo(mymap);
       mymap.on('click', (object: any) => {
-        clickMarkers.clearLayers();
-        clickMarkers.addLayer(L.marker(object.latlng));
+        results.clearLayers();
+        results.addLayer(L.marker(object.latlng));
         route.spliceWaypoints(1, 1, object.latlng);
       });
 
@@ -51,8 +47,7 @@ export class MapComponent implements OnInit {
       // Add leaflet-routing-machine
       const route = L.Routing.control({
         waypoints: [
-          L.latLng(coords.latitude, coords.longitude),
-          L.latLng(21.883623132655234, -102.295269894441786)
+          L.latLng(coords.latitude, coords.longitude)
         ]
       }).addTo(mymap);
 
@@ -64,16 +59,13 @@ export class MapComponent implements OnInit {
         providers: [arcgisOnlineProvider]
       }).addTo(mymap);
 
-      let results = L.layerGroup().addTo(mymap);
-
       searcher.on('results', (data: any) => {
         results.clearLayers();
         for(let i = data.results.length - 1; i >= 0; i--) {
           results.addLayer(L.marker(data.results[i].latlng));
           route.spliceWaypoints(1, 1, data.results[i].latlng);
         }
-        
-      })
+      });
       });
       this.watchPosition();
     }
@@ -82,7 +74,6 @@ export class MapComponent implements OnInit {
       let desLat = 0;
       let desLon = 0;
       let id = navigator.geolocation.watchPosition((position) => {
-        console.log(`Lat: ${position.coords.latitude}, Lon: ${position.coords.longitude}`);
         if (position.coords.latitude === desLat) {
           navigator.geolocation.clearWatch(id);
         }
