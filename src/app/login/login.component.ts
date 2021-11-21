@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
 import { AngularFireAuth } from 'angularfire2/auth';
-import * as firebaseI from 'firebase/app';
 import { AuthService } from '../auth.service';
 
 @Component({
@@ -62,13 +61,6 @@ export class LoginComponent implements OnInit {
     } else {
       errorLogIn.style.display = 'block';
     }
-  }
-  signInFacebook() {
-    this.authFirebase.auth.signInWithPopup(new firebaseI.auth.FacebookAuthProvider())
-  }
-  loginFacebook() {
-    const provider = new firebaseI.auth.FacebookAuthProvider();
-    this.authFirebase.auth.signInWithPopup(provider);
   }
   clearForm() {
     this.username = '';
