@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 declare const L: any;
 
@@ -9,9 +10,16 @@ declare const L: any;
 })
 export class MapComponent implements OnInit {
   title = 'LocationApp';
+
+  constructor(private router: Router) {
+    const userInfo = localStorage.getItem('loggedUser');
+    if(!userInfo){
+      this.router.navigateByUrl('/login')
+    }
+  }
   
   // What to do when the app is charged 
-  ngOnInit(){
+  ngOnInit() {
     if(!navigator.geolocation) {
       alert("Geolocation is not available");
     } 

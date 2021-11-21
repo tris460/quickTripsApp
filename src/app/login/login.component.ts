@@ -57,6 +57,9 @@ export class LoginComponent implements OnInit {
     const correctUser = this.users.filter(u => 
       u.email === this.emailLogIn && u.password === this.pass);
     if(correctUser.length > 0) {
+      const userData = {user: correctUser[0].email};
+      const strUserData = JSON.stringify(userData);
+      localStorage.setItem('loggedUser', strUserData);
       this.router.navigateByUrl('/map');
     } else {
       errorLogIn.style.display = 'block';

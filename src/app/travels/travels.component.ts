@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-travels',
@@ -7,7 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TravelsComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router) {
+    const userInfo = localStorage.getItem('loggedUser');
+    if(!userInfo){
+      this.router.navigateByUrl('/login')
+    }
+  }
 
   ngOnInit(): void {
   }
