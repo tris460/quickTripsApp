@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
 import { AngularFireAuth } from 'angularfire2/auth';
 import * as firebaseI from 'firebase/app';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-login',
@@ -21,7 +22,7 @@ export class LoginComponent implements OnInit {
   pass: string;
   users: Array<any>;
   
-  constructor(public firebase:AngularFireDatabase, private router:Router, public authFirebase:AngularFireAuth) { 
+  constructor(public firebase:AngularFireDatabase, private router:Router, public authFirebase:AngularFireAuth, public authService: AuthService) { 
     this.userList = this.firebase.list('user');
     this.username = '';
     this.email = '';
