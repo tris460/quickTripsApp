@@ -1,4 +1,13 @@
-<div class="travels grid flex travels__button">
-    <a class="link" [routerLink]="['/travels']" routerLinkActive="router-link-active" >Go to travels</a>
-</div>
 <div id="mapid"></div>
+<div class="travels flex">
+    <div class="link travels__button" >
+        <img src="../..//assets/usser.png" class="imgUsser">
+        <label>Partida:</label> <label type="text" placeholder="" class="form" contenteditable="false">Partida</label><br>
+        <label type="text" placeholder="" class="form" contenteditable="false">Coordenadas Partida</label><br>
+        <label>Destino:</label> <label type="text" placeholder="" class="form" contenteditable="false">Destino</label><br>
+        <label type="text" placeholder="" class="form" contenteditable="false">Coordenadas Destino</label><br>
+        <label type="text" placeholder="" class="form" contenteditable="false">Costo</label><br><br>
+        <a class="link travels__button" [routerLink]="['/travels']" routerLinkActive="router-link-active" >Confirm</a><br><br></div>
+    <a class="link travels__button" [routerLink]="['/travels']" routerLinkActive="router-link-active" >Go to travels</a>
+    <a class="link travels__button" [routerLink]="['/travels']" routerLinkActive="router-link-active" >Log out</a>
+</div>
