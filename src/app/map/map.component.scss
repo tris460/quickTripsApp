@@ -53,3 +53,11 @@
     width: 150px;
     margin-bottom: 8%;
 }
+
+@media only screen and (max-width: 1300px){
+    .travels {
+        height: 15vh;
+        width: 25vw;
+        margin-top: -44%;
+    }
+  }
