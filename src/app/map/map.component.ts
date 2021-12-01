@@ -95,4 +95,9 @@ export class MapComponent implements OnInit {
         maximumAge: 0,
       });
     }
+
+    logout() {
+      localStorage.removeItem('loggedUser');
+      this.router.navigateByUrl('/login');
+    }
   }
