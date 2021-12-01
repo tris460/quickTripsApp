@@ -67,6 +67,7 @@ export class MapComponent implements OnInit {
           const lat = pathSelectRoute[i].lat;
           const lon = pathSelectRoute[i].lng;
           this.arrivalCoords = [lat,lon];
+          this.cost = this.getCost();
         }, 1000);
       });
 
@@ -105,6 +106,7 @@ export class MapComponent implements OnInit {
           const lat = pathSelectRoute[i].lat;
           const lon = pathSelectRoute[i].lng;
           this.arrivalCoords = [lat,lon];
+          this.cost = this.getCost();
         }, 1000);
       });
       });
@@ -132,5 +134,17 @@ export class MapComponent implements OnInit {
     logout() {
       localStorage.removeItem('loggedUser');
       this.router.navigateByUrl('/login');
+    }
+
+    getCost(): number {
+      this.distance = this.distance / 1000;
+      if(this.distance < 10) {
+        this.cost = this.distance * 13.5;
+      } else if (this.distance < 30) {
+        this.cost = this.distance * 12.3;
+      } else {
+        this.cost = this.distance * 10.6;
+      }
+      return this.cost;
     }
   }

@@ -8,7 +8,7 @@
         <label>Destiny:</label>
         <label type="text" class="form" contenteditable="false">{{arrivalPoint}}</label><br>
         <label type="text" class="form" contenteditable="false">{{arrivalCoords}}</label><br>
-        <label type="text" class="form" contenteditable="false">${{cost}}</label><br><br>
+        <label type="text" class="form" contenteditable="false">{{cost | currency}}</label><br><br>
         <a class="link travels__button" [routerLink]="['/travels']" routerLinkActive="router-link-active">Confirm</a><br><br></div>
     <a class="link travels__button" [routerLink]="['/travels']" routerLinkActive="router-link-active">Go to travels</a>
     <a class="link travels__button" routerLinkActive="router-link-active" (click)="logout()">Log out</a>
