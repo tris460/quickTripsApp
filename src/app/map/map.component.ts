@@ -10,12 +10,24 @@ declare const L: any;
 })
 export class MapComponent implements OnInit {
   title = 'LocationApp';
+  startingPoint: string;
+  arrivalPoint: string;
+  distance: number;
+  startingCoords: number[];
+  arrivalCoords: number[];
+  cost: number;
 
   constructor(private router: Router) {
     const userInfo = localStorage.getItem('loggedUser');
     if(!userInfo){
       this.router.navigateByUrl('/login')
     }
+    this.startingPoint = 'Right here';
+    this.arrivalPoint = '';
+    this.distance = 0;
+    this.startingCoords = [];
+    this.arrivalCoords = [];
+    this.cost = 0;
   }
   
   // What to do when the app is charged 
@@ -27,6 +39,7 @@ export class MapComponent implements OnInit {
       const coords = position.coords;
       const latLong = [coords.latitude, coords.longitude];
       const mymap = L.map('mapid').setView(latLong, 13);
+      this.startingCoords = latLong;
 
       L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
         attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
@@ -45,6 +58,16 @@ export class MapComponent implements OnInit {
         results.clearLayers();
         results.addLayer(L.marker(object.latlng));
         route.spliceWaypoints(1, 1, object.latlng);
+        setTimeout(() => {
+          const pathRoute = route._routes[0];
+          const pathSelectRoute = route._selectedRoute.coordinates;
+          const i = pathSelectRoute.length - 1;
+          this.distance = pathRoute.summary.totalDistance;
+          this.arrivalPoint = pathRoute.name;
+          const lat = pathSelectRoute[i].lat;
+          const lon = pathSelectRoute[i].lng;
+          this.arrivalCoords = [lat,lon];
+        }, 1000);
       });
 
       let popup = L.popup()
@@ -73,6 +96,16 @@ export class MapComponent implements OnInit {
           results.addLayer(L.marker(data.results[i].latlng));
           route.spliceWaypoints(1, 1, data.results[i].latlng);
         }
+        setTimeout(() => {
+          const pathRoute = route._routes[0];
+          const pathSelectRoute = route._selectedRoute.coordinates;
+          const i = pathSelectRoute.length - 1;
+          this.distance = pathRoute.summary.totalDistance;
+          this.arrivalPoint = pathRoute.name;
+          const lat = pathSelectRoute[i].lat;
+          const lon = pathSelectRoute[i].lng;
+          this.arrivalCoords = [lat,lon];
+        }, 1000);
       });
       });
       this.watchPosition();
