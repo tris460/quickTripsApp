@@ -1,1 +1,34 @@
-<p class="working-message">Working on this!!</p>
+<div class="travels flex">
+    <div class="link button" >
+        <br><div><img src="../..//assets/usser.png" class="imgUsser"></div>
+        <label>Usser's name</label> <br><br>
+        <label type="text" placeholder="" class="form coor">Password</label><br><br>
+        <input type="text" placeholder="New password" class="form coor"><br><br>
+        <a class="link button" [routerLink]="['/map']" routerLinkActive="router-link-active" >Change password</a><br><br>
+    </div>
+    <a class="link button" [routerLink]="['/map']" routerLinkActive="router-link-active" >Return to map</a>
+    <a class="link button" [routerLink]="['/travels']" routerLinkActive="router-link-active" >Log out</a>
+</div>
+<div class="table link">
+    <div>
+        <div>
+            <h1>Your trips</h1>
+            <table>
+                <tr>
+                    <th class="table_travels">Date</th>
+                    <th class="table_travels">Start point</th>
+                    <th class="table_travels">Destination</th>
+                    <th class="table_travels">Cost</th>
+                    <th class="table_travels">Travel</th>
+                </tr>
+                <tr *ngFor="">
+                    <td>date</td>
+                    <td>startPoint</td>
+                    <td>destination</td>
+                    <td>cost</td>
+                    <td>travelButton</td>
+                </tr>
+            </table><br><br>
+        </div>
+    </div>
+</div>
