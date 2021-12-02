@@ -165,6 +165,7 @@ export class MapComponent implements OnInit {
         date: this.date.toUTCString(),
         user: this.$userId,
       });
+      this.clearForm();
     }
 
     getUserID() {
@@ -178,5 +179,12 @@ export class MapComponent implements OnInit {
           }
         });
       });
+    }
+
+    clearForm() {
+      this.startingCoords = [];
+      this.arrivalCoords = [];
+      this.cost = 0;
+      this.arrivalPoint = '';
     }
   }
