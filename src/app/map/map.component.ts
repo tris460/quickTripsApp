@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
 
 declare const L: any;
 
@@ -16,8 +17,12 @@ export class MapComponent implements OnInit {
   startingCoords: number[];
   arrivalCoords: number[];
   cost: number;
+  travelList: AngularFireList<any>;
+  userList: AngularFireList<any>;
+  $userId: string;
+  date: Date = new Date();
 
-  constructor(private router: Router) {
+  constructor(public firebase:AngularFireDatabase, private router:Router) {
     const userInfo = localStorage.getItem('loggedUser');
     if(!userInfo){
       this.router.navigateByUrl('/login')
@@ -28,6 +33,9 @@ export class MapComponent implements OnInit {
     this.startingCoords = [];
     this.arrivalCoords = [];
     this.cost = 0;
+    this.travelList = this.firebase.list('travel');
+    this.userList = this.firebase.list('user');
+    this.$userId = '';
   }
   
   // What to do when the app is charged 
@@ -111,6 +119,7 @@ export class MapComponent implements OnInit {
       });
       });
       this.watchPosition();
+      this.getUserID();
     }
 
     watchPosition() {
@@ -146,5 +155,28 @@ export class MapComponent implements OnInit {
         this.cost = this.distance * 10.6;
       }
       return this.cost;
+    }
+
+    saveTravel() {
+      this.travelList.push({
+        startCoords: this.startingCoords,
+        destinyCoords: this.arrivalCoords,
+        cost: this.cost,
+        date: this.date.toUTCString(),
+        user: this.$userId,
+      });
+    }
+
+    getUserID() {
+      this.userList.snapshotChanges().subscribe(item => {
+        item.forEach(user => {
+          const x: any = user.payload.toJSON();
+          let emailUser = localStorage.getItem('loggedUser');
+          const email = `{"user":${JSON.stringify(x)}}`;
+          if(email === emailUser) {
+            this.$userId = user.key ? user.key : '';
+          }
+        });
+      });
     }
   }
