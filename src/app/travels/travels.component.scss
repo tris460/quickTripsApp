@@ -1,6 +1,95 @@
-.working-message {
-    font-size: 10vh;
-    color: #fff;
-    text-align: center;
-    margin-top: 20%;
+.grid{
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
 }
+
+.flex{
+    display: flex;
+    flex-direction: column;
+    gap: 10%;
+    justify-content: center;
+}
+
+.table { 
+    margin: auto;
+    margin-left: 30%;
+    margin-right: 5%;
+    z-index: 0;
+    position: absolute;
+}
+.button {
+    color: #FFF;
+    border: 1px solid #FFF;
+    background-color: transparent;
+    border-radius: 5px;
+    padding: 3%;
+    text-align: center;
+    font-weight: bolder;
+}
+
+.contenedor {
+    color: #FFF;
+    border: 1px solid #FFF;
+    background-color: transparent;
+    border-radius: 5px;
+    padding: 3%;
+    text-align: center;
+    font-weight: bolder;
+}
+
+.link{
+    font-size: 18px;
+    color: #fff;
+    text-decoration: none;
+    font-family: 'Zen Kaku Gothic Antique', sans-serif;
+    text-align: center;
+}
+
+.travels {
+    height: 15vh;
+    width: 25vw;
+    position: absolute;
+    top: 40%;
+}
+
+.form{
+    margin: 10px;
+    padding: 2%;
+    border: none;
+    font-size: 20px;
+}
+
+.coor{
+    border: 1px solid #FFF;
+    background-color: transparent;
+    border-radius: 5px;
+    padding: 3%;
+    text-align: center;
+    font-size: 15px;
+}
+
+.imgUsser{
+    height: 150px;
+    width: 150px;
+    margin-bottom: 8%;
+}
+
+.table_travels{
+    color: #FFF;
+    border: 1px solid #FFF;
+    background-color: transparent;
+    padding: 1%;
+    text-align: center;
+    font-weight: bolder;
+    width: 700px;
+}
+
+.button:active {
+    box-shadow: 2px 2px 2px rgb(0, 0, 0);
+  }
+
+@media only screen and (min-width: 1300px){
+    .table_travels{
+        width: 500px;
+    }
+  }
