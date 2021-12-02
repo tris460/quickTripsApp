@@ -54,3 +54,11 @@
     width: 150px;
     margin-bottom: 8%;
 }
+
+.button {
+    cursor: pointer;
+}
+
+.button:active {
+    box-shadow: 2px 2px 2px rgb(0, 0, 0);
+}
