@@ -8,7 +8,7 @@
     </div>
     <a class="link button" [routerLink]="['/map']" routerLinkActive="router-link-active" >Return to map</a>
     <a class="link button" [routerLink]="['/travels']" routerLinkActive="router-link-active" >Log out</a>
-</div>
+</div> 
 <div class="table link">
     <div>
         <div>
@@ -21,11 +21,11 @@
                     <th class="table_travels">Cost</th>
                     <th class="table_travels">Travel</th>
                 </tr>
-                <tr *ngFor="">
-                    <td>date</td>
-                    <td>startPoint</td>
-                    <td>destination</td>
-                    <td>cost</td>
+                <tr *ngFor="let t of travel">
+                    <td>{{t.date}}</td>
+                    <td>{{t.startCoords}}</td>
+                    <td>{{t.destinyCoords}}</td>
+                    <td>{{t.cost | currency}}</td>
                     <td>travelButton</td>
                 </tr>
             </table><br><br>
