@@ -104,6 +104,7 @@ export class MapComponent implements OnInit {
         for(let i = data.results.length - 1; i >= 0; i--) {
           results.addLayer(L.marker(data.results[i].latlng));
           route.spliceWaypoints(1, 1, data.results[i].latlng);
+          searcher.spliceWaypoints(1, 1, data.results[i].latlng)
         }
         setTimeout(() => {
           const pathRoute = route._routes[0];
