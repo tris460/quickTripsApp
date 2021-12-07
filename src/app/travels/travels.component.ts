@@ -30,7 +30,13 @@ export class TravelsComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {
+  ngOnInit(){
+    
+  }
+  
+  logout() {
+    localStorage.removeItem('loggedUser');
+    this.router.navigateByUrl('/login');
   }
 
 }
