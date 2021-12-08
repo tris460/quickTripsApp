@@ -10,6 +10,9 @@ import { AngularFireList, AngularFireDatabase } from 'angularfire2/database';
 export class TravelsComponent implements OnInit {
   travelList: AngularFireList<any>;
   travel: Array<any>;
+  userList: AngularFireList<any>;
+  user: Array<any>;
+  $userId: string;
 
   constructor(public firebase:AngularFireDatabase, private router: Router) {
     const userInfo = localStorage.getItem('loggedUser');
@@ -19,18 +22,33 @@ export class TravelsComponent implements OnInit {
 
     this.travelList = this.firebase.list('travel');
     this.travel = [];
+    this.userList = this.firebase.list('user');
+    this.user = [];
+    this.$userId = '';
 
     this.travelList.snapshotChanges().subscribe(item => {
       this.travel = [];
       item.forEach(t => {
         let x = t.payload.toJSON();
         this.travel.push(x);
-        console.log(x)
       });
     });
+    this.getUserID();
   }
-
+  
   ngOnInit(): void {
+  }
+  getUserID() {
+    this.userList.snapshotChanges().subscribe(item => {
+      item.forEach(user => {
+        const x: any = user.payload.toJSON();
+        let emailUser = localStorage.getItem('loggedUser');
+        const email = `{"user":"${x.email}"}`;
+        if(email === emailUser) {
+          this.$userId = user.key ? user.key : '';
+        }
+      });
+    });
   }
 
 }
