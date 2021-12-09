@@ -167,6 +167,7 @@ export class MapComponent implements OnInit {
         user: this.$userId,
       });
       this.clearForm();
+      alert('A car will pick you up soon! :)');
     }
 
     getUserID() {
@@ -183,7 +184,6 @@ export class MapComponent implements OnInit {
     }
 
     clearForm() {
-      this.startingCoords = [];
       this.arrivalCoords = [];
       this.cost = 0;
       this.arrivalPoint = '';
