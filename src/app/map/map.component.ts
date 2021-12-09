@@ -173,7 +173,7 @@ export class MapComponent implements OnInit {
         item.forEach(user => {
           const x: any = user.payload.toJSON();
           let emailUser = localStorage.getItem('loggedUser');
-          const email = `{"user":${JSON.stringify(x)}}`;
+          const email = `{"user":${JSON.stringify(x.email)}}`;
           if(email === emailUser) {
             this.$userId = user.key ? user.key : '';
           }
