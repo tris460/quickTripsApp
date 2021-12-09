@@ -50,7 +50,7 @@ export class TravelsComponent implements OnInit {
         let x = t.payload.toJSON();
         this.travel.push(x);
       });
-      
+      this.travelForUser = [];
       this.travel.forEach((item)=>{
         if(item.user === this.$userId) {
           this.travelForUser.push(item);
