@@ -13,6 +13,7 @@ export class TravelsComponent implements OnInit {
   userList: AngularFireList<any>;
   user: Array<any>;
   $userId: string;
+  travelForUser: Array<any>;
 
   constructor(public firebase:AngularFireDatabase, private router: Router) {
     const userInfo = localStorage.getItem('loggedUser');
@@ -25,14 +26,15 @@ export class TravelsComponent implements OnInit {
     this.userList = this.firebase.list('user');
     this.user = [];
     this.$userId = '';
-  }
-  
-  ngOnInit(): void {
+    this.travelForUser = [];
     this.getDataTable();
   }
   
-  async getDataTable() {
-    await this.userList.snapshotChanges().subscribe(item => {
+  ngOnInit(): void {
+  }
+  
+  getDataTable() {
+    this.userList.snapshotChanges().subscribe(item => {
       item.forEach(user => {
         const x: any = user.payload.toJSON();
         let emailUser = localStorage.getItem('loggedUser');
@@ -42,12 +44,18 @@ export class TravelsComponent implements OnInit {
         }
       });
     });
-    await this.travelList.snapshotChanges().subscribe(item => {
+    this.travelList.snapshotChanges().subscribe(item => {
       this.travel = [];
       item.forEach(t => {
         let x = t.payload.toJSON();
         this.travel.push(x);
       });
+      
+      this.travel.forEach((item)=>{
+        if(item.user === this.$userId) {
+          this.travelForUser.push(item);
+        }
+      })
     });
   }
 
