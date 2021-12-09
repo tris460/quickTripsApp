@@ -25,21 +25,14 @@ export class TravelsComponent implements OnInit {
     this.userList = this.firebase.list('user');
     this.user = [];
     this.$userId = '';
-
-    this.travelList.snapshotChanges().subscribe(item => {
-      this.travel = [];
-      item.forEach(t => {
-        let x = t.payload.toJSON();
-        this.travel.push(x);
-      });
-    });
-    this.getUserID();
   }
   
   ngOnInit(): void {
+    this.getDataTable();
   }
-  getUserID() {
-    this.userList.snapshotChanges().subscribe(item => {
+  
+  async getDataTable() {
+    await this.userList.snapshotChanges().subscribe(item => {
       item.forEach(user => {
         const x: any = user.payload.toJSON();
         let emailUser = localStorage.getItem('loggedUser');
@@ -47,6 +40,13 @@ export class TravelsComponent implements OnInit {
         if(email === emailUser) {
           this.$userId = user.key ? user.key : '';
         }
+      });
+    });
+    await this.travelList.snapshotChanges().subscribe(item => {
+      this.travel = [];
+      item.forEach(t => {
+        let x = t.payload.toJSON();
+        this.travel.push(x);
       });
     });
   }
