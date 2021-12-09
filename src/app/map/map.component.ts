@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
 
 declare const L: any;
+declare var paypal: any;
 
 @Component({
   selector: 'app-map',
@@ -10,6 +11,7 @@ declare const L: any;
   styleUrls: ['./map.component.scss']
 })
 export class MapComponent implements OnInit {
+  @ViewChild('paypal', { static: true }) paypalDiv: ElementRef = {} as ElementRef;
   title = 'LocationApp';
   startingPoint: string;
   arrivalPoint: string;
@@ -40,6 +42,25 @@ export class MapComponent implements OnInit {
   
   // What to do when the app is charged 
   ngOnInit() {
+
+    paypal.Buttons({
+      createOrder: (data: any, actions: any) => {
+        return actions.order.create({
+          purchase_units:[
+            
+          ]
+        })
+      },
+      onApprove: async (data:any,actions:any)=>{
+        const order = await actions.order.capture()
+        console.log('Si se pudo procesar la transaccion', order)
+      },
+      onError:(err:any)=>{
+        console.log('No se pudo procesar',err)
+      }
+    })
+    .render(this.paypalDiv.nativeElement)
+
     if(!navigator.geolocation) {
       alert("Geolocation is not available");
     } 
@@ -189,3 +210,4 @@ export class MapComponent implements OnInit {
       this.arrivalPoint = '';
     }
   }
+  
