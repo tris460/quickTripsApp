@@ -22,9 +22,9 @@
                     <th class="table_travels">Travel</th>
                 </tr>
                 <tr *ngFor="let t of travelForUser">
-                    <td>{{t.date}}</td>
-                    <td>{{t.startCoords}}</td>
-                    <td>{{t.destinyCoords}}</td>
+                    <td>{{t.date}}</td> 
+                    <td>{{t.startCoords['0']}}, {{t.startCoords['1']}}</td>
+                    <td>{{t.destinyCoords['0']}}, {{t.destinyCoords['1']}}</td>
                     <td>{{t.cost | currency}}</td>
                     <td>travelButton</td>
                 </tr>
