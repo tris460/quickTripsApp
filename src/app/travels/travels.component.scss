@@ -16,11 +16,17 @@
     margin-right: 5%;
     margin-top: 5%;
     z-index: 0;
-    position: absolute;
-    overflow:scroll;
-    width: 67%;
+    overflow-y: scroll;
+    width: 69%;
     height: 80%;
 }
+
+.table_title{
+    color: #fff;
+    font-family: 'Zen Kaku Gothic Antique', sans-serif;
+    margin-left: 57%;
+}
+
 .button {
     color: #FFF;
     border: 1px solid #FFF;
@@ -102,5 +108,8 @@
     .table {
         width: 67%;
         height: 67%;
+    }
+    .table_title{
+        margin-left: 58%;
     }
   }
