@@ -44,7 +44,7 @@ export class MapComponent implements OnInit {
   ngOnInit() {
 
     paypal.Buttons({
-        createOrder: (data: any, actions: any) => {
+        createTravel: (data: any, actions: any) => {
           return actions.order.create({
             pay_travel:[
               {
