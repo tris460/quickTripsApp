@@ -44,22 +44,28 @@ export class MapComponent implements OnInit {
   ngOnInit() {
 
     paypal.Buttons({
-      createOrder: (data: any, actions: any) => {
-        return actions.order.create({
-          purchase_units:[
-            
-          ]
-        })
-      },
-      onApprove: async (data:any,actions:any)=>{
-        const order = await actions.order.capture()
-        console.log('Si se pudo procesar la transaccion', order)
-      },
-      onError:(err:any)=>{
-        console.log('No se pudo procesar',err)
+        createOrder: (data: any, actions: any) => {
+          return actions.order.create({
+            pay_travel:[
+              {
+                value:this.cost,
+                currency_code:'MXN'
+              }
+            ]
+          })
+        },
+        onApprove: async (data:any,actions:any)=>{
+          const order = await actions.order.capture()
+          alert('Transaction successful');
+          console.log('Transaction successful', order)
+        },
+        onError:(err:any)=>{
+          alert('Could not process the transaction');
+          console.log('Could not process the transaction',err)
+        }
       }
-    })
-    .render(this.paypalDiv.nativeElement)
+      )
+      .render(this.paypalDiv.nativeElement)
 
     if(!navigator.geolocation) {
       alert("Geolocation is not available");

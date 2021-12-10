@@ -8,7 +8,7 @@
         <label>Destiny:</label>
         <label type="text" contenteditable="false">   {{arrivalPoint}}</label><br>
         <label type="text" class="smallertext" contenteditable="false">   {{arrivalCoords}}</label><br><br>
-        <label type="text" contenteditable="false">   {{cost | currency}}</label><br><br>
+        <label type="text" contenteditable="false" [(ngModel)]="cost">   {{cost | currency}}</label><br><br>
         <a #paypal></a>
         <a class="link travels__button button" (click)="saveTravel()">Confirm</a><br><br></div>
     <a class="link travels__button button" [routerLink]="['/travels']" routerLinkActive="router-link-active">Go to travels</a>
