@@ -30,9 +30,6 @@ export class TravelsComponent implements OnInit {
     this.getDataTable();
   }
   
-  ngOnInit(): void {
-  }
-  
   getDataTable() {
     this.userList.snapshotChanges().subscribe(item => {
       item.forEach(user => {
@@ -57,6 +54,15 @@ export class TravelsComponent implements OnInit {
         } 
       })
     });
+  }
+
+  ngOnInit(){
+    
+  }
+  
+  logout() {
+    localStorage.removeItem('loggedUser');
+    this.router.navigateByUrl('/login');
   }
 
 }

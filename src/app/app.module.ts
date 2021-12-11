@@ -18,7 +18,7 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
     AppComponent,
     LoginComponent,
     MapComponent,
-    TravelsComponent
+    TravelsComponent,
   ],
   imports: [
     BrowserModule,

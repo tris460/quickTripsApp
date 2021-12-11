@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
 
 declare const L: any;
+declare var paypal: any;
 
 @Component({
   selector: 'app-map',
@@ -10,6 +11,7 @@ declare const L: any;
   styleUrls: ['./map.component.scss']
 })
 export class MapComponent implements OnInit {
+  @ViewChild('paypal', { static: true }) paypalDiv: ElementRef = {} as ElementRef;
   title = 'LocationApp';
   startingPoint: string;
   arrivalPoint: string;
@@ -40,6 +42,31 @@ export class MapComponent implements OnInit {
   
   // What to do when the app is charged 
   ngOnInit() {
+
+    paypal.Buttons({
+        createTravel: (data: any, actions: any) => {
+          return actions.order.create({
+            pay_travel:[
+              {
+                value:this.cost,
+                currency_code:'MXN'
+              }
+            ]
+          })
+        },
+        onApprove: async (data:any,actions:any)=>{
+          const order = await actions.order.capture()
+          alert('Transaction successful');
+          console.log('Transaction successful', order)
+        },
+        onError:(err:any)=>{
+          alert('Could not process the transaction');
+          console.log('Could not process the transaction',err)
+        }
+      }
+      )
+      .render(this.paypalDiv.nativeElement)
+
     if(!navigator.geolocation) {
       alert("Geolocation is not available");
     } 
@@ -104,6 +131,7 @@ export class MapComponent implements OnInit {
         for(let i = data.results.length - 1; i >= 0; i--) {
           results.addLayer(L.marker(data.results[i].latlng));
           route.spliceWaypoints(1, 1, data.results[i].latlng);
+          searcher.spliceWaypoints(1, 1, data.results[i].latlng)
         }
         setTimeout(() => {
           const pathRoute = route._routes[0];
@@ -188,3 +216,4 @@ export class MapComponent implements OnInit {
       this.arrivalPoint = '';
     }
   }
+  

@@ -14,9 +14,19 @@
     margin: auto;
     margin-left: 30%;
     margin-right: 5%;
+    margin-top: 5%;
     z-index: 0;
-    position: absolute;
+    overflow-y: scroll;
+    width: 69%;
+    height: 80%;
 }
+
+.table_title{
+    color: #fff;
+    font-family: 'Zen Kaku Gothic Antique', sans-serif;
+    margin-left: 57%;
+}
+
 .button {
     color: #FFF;
     border: 1px solid #FFF;
@@ -25,6 +35,7 @@
     padding: 3%;
     text-align: center;
     font-weight: bolder;
+    margin-top: 3%;
 }
 
 .contenedor {
@@ -68,10 +79,11 @@
     font-size: 15px;
 }
 
-.imgUsser{
+.imglogo{
     height: 150px;
     width: 150px;
-    margin-bottom: 8%;
+    margin-top: 2%;
+    margin-left: 18%;
 }
 
 .table_travels{
@@ -81,7 +93,10 @@
     padding: 1%;
     text-align: center;
     font-weight: bolder;
-    width: 700px;
+}
+
+.button {
+    cursor: pointer;
 }
 
 .button:active {
@@ -91,5 +106,12 @@
 @media only screen and (min-width: 1300px){
     .table_travels{
         width: 500px;
+    }
+    .table {
+        width: 67%;
+        height: 67%;
+    }
+    .table_title{
+        margin-left: 58%;
     }
   }
