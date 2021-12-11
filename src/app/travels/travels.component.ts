@@ -51,7 +51,7 @@ export class TravelsComponent implements OnInit {
       this.travel.forEach((item)=>{
         if(item.user === this.$userId) {
           this.travelForUser.push(item);
-        }
+        } 
       })
     });
   }

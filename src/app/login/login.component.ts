@@ -49,7 +49,12 @@ export class LoginComponent implements OnInit {
         email: this.email,
         password: this.password
       });
+      const userData = {user: this.email};
+      const strUserData = JSON.stringify(userData);
+      localStorage.setItem('loggedUser', strUserData);
       this.router.navigateByUrl('/map');
+    } else {
+      console.log('Try again');
     }
   }
   logIn() {
@@ -64,12 +69,6 @@ export class LoginComponent implements OnInit {
     } else {
       errorLogIn.style.display = 'block';
     }
-  }
-  clearForm() {
-    this.username = '';
-    this.email = '';
-    this.password = '';
-    this.repeatPassword = '';
   }
   validateFieldsSignIn() {
     const errorName = document.getElementById('errorName') || document.createElement('p');
@@ -132,11 +131,7 @@ export class LoginComponent implements OnInit {
       validator = false;
     }
 
-    if(validator) {
-      return validator;
-    } else {
-      return validator;
-    }
+    return validator;
   }
 
   // Styes
